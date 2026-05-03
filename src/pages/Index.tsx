@@ -11,7 +11,18 @@ const Index = () => {
   const [active, setActive] = useState<(typeof categories)[number]>("Todos");
 
   const filtered = useMemo(() => {
-    return shoots.filter((s) => {
+    // Pega apenas uma foto principal por categoria (a primeira ou a que for 'featured')
+    const categoryCovers = new Map<string, typeof shoots[0]>();
+    
+    for (const s of shoots) {
+      if (!categoryCovers.has(s.category) || s.featured) {
+        categoryCovers.set(s.category, s);
+      }
+    }
+    
+    const uniqueShoots = Array.from(categoryCovers.values());
+
+    return uniqueShoots.filter((s) => {
       const matchCat = active === "Todos" || s.category === active;
       const matchQ =
         !query ||
@@ -38,18 +49,23 @@ const Index = () => {
       <Sidebar />
 
       <div className="flex-1 min-w-0 relative z-10">
-        <CatalogHeader query={query} onQuery={setQuery} />
+        <CatalogHeader 
+          query={query} 
+          onQuery={setQuery} 
+          activeCategory={active}
+          onCategorySelect={setActive}
+        />
 
         <main className="px-6 md:px-10 py-8">
           {/* Hero / Title */}
           <section className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs text-secondary mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-xs text-primary mb-4">
                 <Sparkles className="h-3 w-3" />
                 Coleção Outono 2026
               </div>
               <h1 className="font-display text-4xl md:text-5xl leading-tight max-w-2xl">
-                Catálogo de <span className="italic text-secondary">estilos fotográficos</span>
+                Catálogo de <span className="italic text-primary/80">estilos fotográficos</span>
               </h1>
               <p className="text-muted-foreground mt-3 max-w-xl">
                 Navegue pelo nosso portfólio, conheça os estilos que fotografamos e inspire-se para o seu próximo ensaio.
@@ -61,23 +77,7 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Categories */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActive(cat)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm border transition-all",
-                  active === cat
-                    ? "bg-secondary text-secondary-foreground border-secondary shadow-glow"
-                    : "bg-muted/40 border-border text-muted-foreground hover:text-foreground hover:border-primary/40"
-                )}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+
 
           {/* Grid */}
           {filtered.length > 0 ? (
@@ -116,7 +116,7 @@ const Stat = ({
     className={cn(
       "px-4 py-3 rounded-xl border min-w-[100px]",
       highlight
-        ? "border-secondary/40 bg-secondary/10 text-secondary"
+        ? "border-primary/40 bg-primary/10 text-primary"
         : "border-border bg-card/50 text-foreground"
     )}
   >
