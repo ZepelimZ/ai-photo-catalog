@@ -1,4 +1,4 @@
-import { Search, SlidersHorizontal, Bell, Plus, Check } from "lucide-react";
+import { Search, SlidersHorizontal, Bell, Check } from "lucide-react";
 import { categories } from "@/data/shoots";
 import {
   DropdownMenu,
@@ -54,13 +54,6 @@ export const CatalogHeader = ({ query, onQuery, activeCategory, onCategorySelect
         >
           <Bell className="h-4 w-4" />
           <span className="absolute top-3 right-3 h-2 w-2 rounded-full bg-secondary" />
-        </button>
-        <button
-          className="flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] shadow-glow"
-          style={{ background: "var(--gradient-primary)" }}
-        >
-          <Plus className="h-4 w-4" />
-          Novo Ensaio
         </button>
       </div>
     </header>

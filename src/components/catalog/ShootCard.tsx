@@ -10,14 +10,14 @@ export const ShootCard = ({ shoot, minimal }: { shoot: Shoot; minimal?: boolean 
   const navigate = useNavigate();
   return (
     <article className="group relative bg-card/60 backdrop-blur-sm rounded-2xl border border-border overflow-hidden hover:border-primary/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-glow">
-      <div className="relative aspect-[4/5] overflow-hidden">
+      <div className="relative h-96 overflow-hidden">
         <img
           src={shoot.image}
           alt={`Ensaio ${shoot.title} - estilo ${shoot.category}`}
           loading="lazy"
           width={768}
           height={960}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-80" />
         {minimal && (
@@ -39,7 +39,7 @@ export const ShootCard = ({ shoot, minimal }: { shoot: Shoot; minimal?: boolean 
         )}
       </div>
 
-      <div className="p-5 -mt-16 relative">
+      <div className="p-4 -mt-12 relative">
         {!minimal && <h3 className="font-display text-2xl leading-tight mb-2">{shoot.title}</h3>}
         <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{shoot.description}</p>
         {!minimal && (

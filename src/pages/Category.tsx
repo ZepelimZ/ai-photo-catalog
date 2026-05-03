@@ -1,20 +1,25 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { Sidebar } from "@/components/catalog/Sidebar";
 import { ShootCard } from "@/components/catalog/ShootCard";
+import { PhotoLightbox } from "@/components/catalog/PhotoLightbox";
 import { shoots } from "@/data/shoots";
 
 const Category = () => {
   const { id } = useParams<{ id: string }>();
-  
-  // Encontrar os ensaios daquela categoria
-  // Vamos usar lowerCase para ignorar case sensitivity na URL
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   const categoryShoots = shoots.filter(
     (s) => s.category.toLowerCase() === id?.toLowerCase()
   );
 
-  // Nome da categoria formatado (primeira letra maiúscula)
   const categoryName = id ? id.charAt(0).toUpperCase() + id.slice(1) : "";
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+  const prevPhoto = () => setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : i));
+  const nextPhoto = () => setLightboxIndex((i) => (i !== null && i < categoryShoots.length - 1 ? i + 1 : i));
 
   return (
     <div className="min-h-screen flex bg-background text-foreground relative overflow-hidden">
@@ -48,14 +53,20 @@ const Category = () => {
               Estilo <span className="italic text-primary/80">{categoryName}</span>
             </h1>
             <p className="text-muted-foreground mt-3 max-w-xl">
-              Confira os ensaios fotográficos com o estilo {categoryName}. Role para baixo para explorar as fotografias desta categoria.
+              Confira os ensaios fotográficos com o estilo {categoryName}. Clique em uma foto para visualizá-la por completo.
             </p>
           </section>
 
           {categoryShoots.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {categoryShoots.map((s) => (
-                <ShootCard key={s.id} shoot={s} minimal={true} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+              {categoryShoots.map((s, index) => (
+                <div
+                  key={s.id}
+                  className="cursor-zoom-in"
+                  onClick={() => openLightbox(index)}
+                >
+                  <ShootCard shoot={s} minimal={true} />
+                </div>
               ))}
             </div>
           ) : (
@@ -65,8 +76,19 @@ const Category = () => {
           )}
         </main>
       </div>
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <PhotoLightbox
+          shoot={categoryShoots[lightboxIndex]}
+          onClose={closeLightbox}
+          onPrev={lightboxIndex > 0 ? prevPhoto : undefined}
+          onNext={lightboxIndex < categoryShoots.length - 1 ? nextPhoto : undefined}
+        />
+      )}
     </div>
   );
 };
 
 export default Category;
+

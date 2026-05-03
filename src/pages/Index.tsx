@@ -1,14 +1,16 @@
 import { useMemo, useState } from "react";
-import { Sparkles, TrendingUp, Layers } from "lucide-react";
+import { Sparkles, TrendingUp, Layers, Plus } from "lucide-react";
 import { Sidebar } from "@/components/catalog/Sidebar";
 import { CatalogHeader } from "@/components/catalog/CatalogHeader";
 import { ShootCard } from "@/components/catalog/ShootCard";
+import { NewShootModal } from "@/components/catalog/NewShootModal";
 import { categories, shoots } from "@/data/shoots";
 import { cn } from "@/lib/utils";
 
 const Index = () => {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState<(typeof categories)[number]>("Todos");
+  const [showModal, setShowModal] = useState(false);
 
   const filtered = useMemo(() => {
     // Pega apenas uma foto principal por categoria (a primeira ou a que for 'featured')
@@ -71,9 +73,19 @@ const Index = () => {
                 Navegue pelo nosso portfólio, conheça os estilos que fotografamos e inspire-se para o seu próximo ensaio.
               </p>
             </div>
-            <div className="flex gap-3">
-              <Stat icon={<Layers className="h-4 w-4" />} label="Categorias" value="5" />
-              <Stat icon={<TrendingUp className="h-4 w-4" />} label="Estilos" value="48" highlight />
+            <div className="flex items-center gap-3">
+              <Stat icon={<Layers className="h-4 w-4" />} label="Categorias" value={String(categories.length - 1)} />
+              <Stat icon={<TrendingUp className="h-4 w-4" />} label="Estilos" value={String(shoots.length)} highlight />
+              <button
+                onClick={() => setShowModal(true)}
+                className="flex flex-col justify-between px-4 py-3 rounded-xl border border-primary/40 bg-primary/10 text-primary min-w-[100px] transition-all hover:bg-primary/20 hover:scale-[1.02]"
+              >
+                <div className="flex items-center gap-2 text-xs opacity-80">
+                  <Plus className="h-4 w-4" />
+                  <span>Novo</span>
+                </div>
+                <div className="font-display text-2xl mt-1">Ensaio</div>
+              </button>
             </div>
           </section>
 
@@ -97,6 +109,8 @@ const Index = () => {
           </footer>
         </main>
       </div>
+
+      {showModal && <NewShootModal onClose={() => setShowModal(false)} />}
     </div>
   );
 };
