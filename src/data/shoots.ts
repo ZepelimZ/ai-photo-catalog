@@ -1,9 +1,8 @@
-import shoot1 from "@/assets/shoot-1.jpg";
-import shoot2 from "@/assets/shoot-2.jpg";
-import shoot3 from "@/assets/shoot-3.jpg";
-import shoot4 from "@/assets/shoot-4.jpg";
-import shoot5 from "@/assets/shoot-5.jpg";
-import shoot6 from "@/assets/shoot-6.jpg";
+import shootAniversario from "@/assets/ensaio_aniversario.png";
+import shootPerfil from "@/assets/ensaio_perfil.png";
+import shootAutoridade from "@/assets/ensaio_autoridade.png";
+import shootMasculino from "@/assets/ensaio_masculino.png";
+import shootFeminino from "@/assets/ensaio_feminino.png";
 
 export type Shoot = {
   id: string;
@@ -27,51 +26,43 @@ export const categories = [
 export const shoots: Shoot[] = [
   {
     id: "1",
-    title: "Celestial Bloom",
-    category: "Feminino",
-    description: "Retrato etéreo com luz cósmica e flores luminosas.",
-    credits: 120,
-    image: shoot1,
+    title: "Celebração Elegante",
+    category: "Aniversario",
+    description: "Ensaio fotográfico de aniversário com decoração sofisticada e atmosfera festiva.",
+    credits: 0,
+    image: shootAniversario,
     featured: true,
   },
   {
     id: "2",
-    title: "Neon Tokyo",
-    category: "Masculino",
-    description: "Editorial urbano banhado em néon magenta e ciano.",
-    credits: 95,
-    image: shoot2,
+    title: "Perfil Corporativo",
+    category: "Perfil",
+    description: "Retrato profissional moderno com iluminação cinematográfica para perfis e portfólios.",
+    credits: 0,
+    image: shootPerfil,
   },
   {
     id: "3",
-    title: "Noir Whisper",
+    title: "Presença Executiva",
     category: "Autoridade",
-    description: "Retrato em P&B com sombras dramáticas e fumaça vintage.",
-    credits: 80,
-    image: shoot3,
+    description: "Fotografia de alto impacto para líderes e executivos que buscam transmitir confiança e poder.",
+    credits: 0,
+    image: shootAutoridade,
   },
   {
     id: "4",
-    title: "Golden Reverie",
-    category: "Aniversario",
-    description: "Sonho pastel com partículas douradas suspensas no ar.",
-    credits: 110,
-    image: shoot4,
+    title: "Estilo Masculino",
+    category: "Masculino",
+    description: "Ensaio de moda e lifestyle com foco em estética marcante e iluminação dramática.",
+    credits: 0,
+    image: shootMasculino,
   },
   {
     id: "5",
-    title: "Concrete Muse",
-    category: "Perfil",
-    description: "Pose escultural em estúdio de concreto com luz dourada.",
-    credits: 130,
-    image: shoot5,
-  },
-  {
-    id: "6",
-    title: "Aurora Mystic",
+    title: "Beleza Feminina",
     category: "Feminino",
-    description: "Silhueta sob a aurora boreal em uma paisagem mágica.",
-    credits: 140,
-    image: shoot6,
+    description: "Retrato editorial feminino com luz suave, destacando a elegância e estética.",
+    credits: 0,
+    image: shootFeminino,
   },
 ];
