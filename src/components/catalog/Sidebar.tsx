@@ -1,4 +1,4 @@
-import { Sparkles, LayoutGrid, Image as ImageIcon, Wand2, Settings, Crown } from "lucide-react";
+import { Sparkles, LayoutGrid, Image as ImageIcon, Wand2, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -43,22 +43,6 @@ export const Sidebar = () => {
         ))}
       </nav>
 
-      <div
-        className="mt-8 rounded-xl p-5 border border-secondary/30 relative overflow-hidden"
-        style={{ background: "var(--gradient-glow)" }}
-      >
-        <Crown className="h-5 w-5 text-secondary mb-3" />
-        <h3 className="font-display text-lg leading-tight mb-1">Plano Pro</h3>
-        <p className="text-xs text-muted-foreground mb-4">
-          Créditos ilimitados e estilos exclusivos.
-        </p>
-        <button
-          className="w-full py-2 rounded-lg text-sm font-semibold text-secondary-foreground transition-transform hover:scale-[1.02]"
-          style={{ background: "var(--gradient-gold)" }}
-        >
-          Fazer Upgrade
-        </button>
-      </div>
     </aside>
   );
 };

@@ -17,19 +17,18 @@ export type Shoot = {
 
 export const categories = [
   "Todos",
-  "Fantasia",
-  "Cyberpunk",
-  "Cinemático",
-  "Etéreo",
-  "Editorial",
-  "Natureza",
+  "Aniversario",
+  "Perfil",
+  "Autoridade",
+  "Masculino",
+  "Feminino",
 ] as const;
 
 export const shoots: Shoot[] = [
   {
     id: "1",
     title: "Celestial Bloom",
-    category: "Fantasia",
+    category: "Feminino",
     description: "Retrato etéreo com luz cósmica e flores luminosas.",
     credits: 120,
     image: shoot1,
@@ -38,7 +37,7 @@ export const shoots: Shoot[] = [
   {
     id: "2",
     title: "Neon Tokyo",
-    category: "Cyberpunk",
+    category: "Masculino",
     description: "Editorial urbano banhado em néon magenta e ciano.",
     credits: 95,
     image: shoot2,
@@ -46,7 +45,7 @@ export const shoots: Shoot[] = [
   {
     id: "3",
     title: "Noir Whisper",
-    category: "Cinemático",
+    category: "Autoridade",
     description: "Retrato em P&B com sombras dramáticas e fumaça vintage.",
     credits: 80,
     image: shoot3,
@@ -54,7 +53,7 @@ export const shoots: Shoot[] = [
   {
     id: "4",
     title: "Golden Reverie",
-    category: "Etéreo",
+    category: "Aniversario",
     description: "Sonho pastel com partículas douradas suspensas no ar.",
     credits: 110,
     image: shoot4,
@@ -62,7 +61,7 @@ export const shoots: Shoot[] = [
   {
     id: "5",
     title: "Concrete Muse",
-    category: "Editorial",
+    category: "Perfil",
     description: "Pose escultural em estúdio de concreto com luz dourada.",
     credits: 130,
     image: shoot5,
@@ -70,7 +69,7 @@ export const shoots: Shoot[] = [
   {
     id: "6",
     title: "Aurora Mystic",
-    category: "Natureza",
+    category: "Feminino",
     description: "Silhueta sob a aurora boreal em uma paisagem mágica.",
     credits: 140,
     image: shoot6,
