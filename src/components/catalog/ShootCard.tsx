@@ -2,10 +2,12 @@ import { Sparkles, Heart } from "lucide-react";
 import type { Shoot } from "@/data/shoots";
 import { useFavorites } from "@/hooks/useFavorites";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 export const ShootCard = ({ shoot, minimal }: { shoot: Shoot; minimal?: boolean }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const favorited = isFavorite(shoot.id);
+  const navigate = useNavigate();
   return (
     <article className="group relative bg-card/60 backdrop-blur-sm rounded-2xl border border-border overflow-hidden hover:border-primary/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-glow">
       <div className="relative aspect-[4/5] overflow-hidden">
@@ -44,7 +46,7 @@ export const ShootCard = ({ shoot, minimal }: { shoot: Shoot; minimal?: boolean 
           <div className="flex items-center justify-end mt-2">
             <button 
               className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary/15 text-foreground border border-primary/30 hover:bg-primary/25 transition-colors"
-              onClick={() => window.open(`/categoria/${shoot.category.toLowerCase()}`, "_blank")}
+              onClick={() => navigate(`/categoria/${shoot.category.toLowerCase()}`)}
             >
               Ver Estilo
             </button>
