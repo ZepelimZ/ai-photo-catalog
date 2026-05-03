@@ -49,16 +49,15 @@ const Index = () => {
                 Coleção Outono 2026
               </div>
               <h1 className="font-display text-4xl md:text-5xl leading-tight max-w-2xl">
-                Catálogo de <span className="italic text-secondary">ensaios fotográficos</span> com IA
+                Catálogo de <span className="italic text-secondary">estilos fotográficos</span>
               </h1>
               <p className="text-muted-foreground mt-3 max-w-xl">
-                Escolha um estilo, envie suas referências e receba seu ensaio editorial em minutos.
+                Navegue pelo nosso portfólio, conheça os estilos que fotografamos e inspire-se para o seu próximo ensaio.
               </p>
             </div>
             <div className="flex gap-3">
-              <Stat icon={<Layers className="h-4 w-4" />} label="Estilos" value="48" />
-              <Stat icon={<TrendingUp className="h-4 w-4" />} label="Em alta" value="12" />
-              <Stat icon={<Sparkles className="h-4 w-4" />} label="Créditos" value="240" highlight />
+              <Stat icon={<Layers className="h-4 w-4" />} label="Categorias" value="5" />
+              <Stat icon={<TrendingUp className="h-4 w-4" />} label="Estilos" value="48" highlight />
             </div>
           </section>
 
@@ -94,7 +93,7 @@ const Index = () => {
           )}
 
           <footer className="mt-16 pb-8 text-center text-xs text-muted-foreground">
-            Lumina AI — todos os ensaios são gerados por inteligência artificial.
+            NeoStudio — Estúdio Fotográfico Especializado.
           </footer>
         </main>
       </div>

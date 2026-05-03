@@ -2,11 +2,8 @@ import { Sparkles, LayoutGrid, Image as ImageIcon, Wand2, Settings } from "lucid
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { label: "Descobrir", icon: Sparkles, key: "discover" },
-  { label: "Catálogo", icon: LayoutGrid, key: "catalog", active: true },
-  { label: "Meus Ensaios", icon: ImageIcon, key: "shoots" },
-  { label: "Geradores", icon: Wand2, key: "gen" },
-  { label: "Ajustes", icon: Settings, key: "settings" },
+  { label: "Início", icon: Sparkles, key: "home" },
+  { label: "Estilos", icon: LayoutGrid, key: "styles", active: true },
 ];
 
 export const Sidebar = () => {
@@ -20,7 +17,7 @@ export const Sidebar = () => {
           <Sparkles className="h-5 w-5" />
         </div>
         <div>
-          <h1 className="font-display text-xl leading-none">Lumina AI</h1>
+          <h1 className="font-display text-xl leading-none">NeoStudio</h1>
           <p className="text-xs text-muted-foreground mt-1">Photo Studio</p>
         </div>
       </div>

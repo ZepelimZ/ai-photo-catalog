@@ -28,14 +28,9 @@ export const ShootCard = ({ shoot }: { shoot: Shoot }) => {
       <div className="p-5 -mt-16 relative">
         <h3 className="font-display text-2xl leading-tight mb-2">{shoot.title}</h3>
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{shoot.description}</p>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-secondary">
-            <Sparkles className="h-4 w-4" />
-            <span className="font-bold">{shoot.credits}</span>
-            <span className="text-xs text-muted-foreground">créditos</span>
-          </div>
+        <div className="flex items-center justify-end mt-2">
           <button className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary/15 text-foreground border border-primary/30 hover:bg-primary/25 transition-colors">
-            Gerar
+            Ver Estilo
           </button>
         </div>
       </div>
